@@ -91,8 +91,9 @@
 	Plugging in the substitutions we get,\\
 	$\displaystyle
 		\therefore \text{I} = \frac{4}{3} \left(\frac{a}{a+3}\right)^{\frac{1}{4}} +C=\boxed{\frac{4}{3} \sqrt[4]{\frac{x-1}{x+2}} +C}
-	$
-	\\ \\ \\
+	$\\ \\
+	\hrule
+	\pagebreak
 	\section{Partial Fraction Decomposition}
 	\subsection{Evaluate}
 	1. $\displaystyle \int \frac{1+x^3}{1+x^2}dx$ \\
@@ -115,7 +116,8 @@
 	Putting $\displaystyle x = -\frac{1}{2}$, we get $\displaystyle \frac{49}{4}A = -\frac{1}{2} \implies A = -\frac{2}{49}$ \\ \\
 	Putting $x = 0$, we get $\displaystyle \frac{-18}{49}-3B+\frac{3}{7} = 0 \implies B = \frac{1}{49}$ \\ \\
 	$\displaystyle \therefore \text{I} = \frac{-1}{49}\int \frac{2}{2x+1}dx + \frac{1}{49} \int \frac{dx}{x-3} + \frac{3}{7} \int \frac{dx}{(x-3)^2}$ \\ \\
-	$\displaystyle \implies I = \boxed{\frac{1}{49}\ln\left(\frac{x-3}{2x+1}\right) - \frac{3}{7(x-3)}+C}$
+	$\displaystyle \implies I = \boxed{\frac{1}{49}\ln\left(\frac{x-3}{2x+1}\right) - \frac{3}{7(x-3)}+C}$\\ \\
+	\hrule
 	\section{Change of order in double integrals}
 	\subsection{Evaluate the following by changing the order}
 	1. $\displaystyle \int\limits_0^8 \int\limits_{\sqrt[3]{x}}^2 \frac{1}{1+y^4} dy \ dx$ \\
@@ -131,7 +133,8 @@
 	$\therefore$ I = $\displaystyle \int\limits_0^2 \frac{y^3}{1+y^4} dx = \frac{1}{4} \left[\ln(|1+y^4|)\right]_0^2 = \boxed{\frac{\ln(17)}{4}}$ \\ \\ \\
 	2. I = $\displaystyle \int\limits_0^2 \int\limits_{\frac{y}{2}}^1 e^{-x^2} dx \ dy = \int\limits_0^1 \int\limits_0^{2x} e^{-x^2} dy \ dx$\\ \\
 	Let $u = -x^2 \implies du = -2x \ dx$ \\ \\
-	$\therefore$ I = $\displaystyle -\int\limits_0^{-1}e^u du = - \left[e^u\right]_0^{-1} = \boxed{1-\frac{1}{e}}$
+	$\therefore$ I = $\displaystyle -\int\limits_0^{-1}e^u du = - \left[e^u\right]_0^{-1} = \boxed{1-\frac{1}{e}}$\\ \\
+	\hrule
 	\section{Weierstrass Substitution Technique}
 	%\pagebreak
 	We take $t$ as a dummy variable such that $\displaystyle t = \tan\left(\frac{x}{2}\right) \implies dx = \frac{2}{1+t^2}dt$ \\
@@ -152,5 +155,6 @@
 	3. I = $\displaystyle \int \limits_0^\pi 1-\frac{1}{1+\sin(x)} \ dx = \pi - \int \limits_0^\pi \frac{dx}{1+\sin(x)}$ \\
 	Substituting $\displaystyle t = \tan\left(\frac{x}{2}\right)$ and changing the limits\\
 	I = $\displaystyle \pi - \int \limits_0^\infty \frac{1}{1+\frac{2t}{1+t^2}} \times \frac{2}{1+t^2} \ dt = \pi + 2 \int \limits_0^\infty \frac{-1}{(1+t)^2} \ dt$ \\ \\
-	I = $\displaystyle \pi + 2 \left[\frac{1}{1+t}\right]_0^\infty = \pi + 2(0-1) = \boxed{\pi-2}$
+	I = $\displaystyle \pi + 2 \left[\frac{1}{1+t}\right]_0^\infty = \pi + 2(0-1) = \boxed{\pi-2}$\\ \\
+	\hrule
 \end{document}

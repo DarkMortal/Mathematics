@@ -1,0 +1,245 @@
+\documentclass[20pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{titlesec}
+\titlespacing*{\section}
+{0pt}{1ex plus 1ex minus .2ex}{1ex plus .2ex}
+\titlespacing*{\subsection}
+{0pt}{1ex plus 1ex minus .2ex}{1ex plus .2ex}
+\setlength{\parindent}{0pt}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=15mm,
+	right=15mm,
+	top=10mm,
+	bottom=20mm,
+}
+\usepackage{titling}
+\setlength{\droptitle}{-60pt} % Adjust the negative value as needed
+\begin{document}
+	\begin{large}
+		\title{Lagrange Multipliers}
+		\author{Saptarshi Dey}
+		%\date{20 February, 2021}
+		\maketitle
+		\section{Vector calculus basics}
+		\subsection{Divergence}
+		Measures how much a vector field is "spreading out" from a point. It takes a vector field $\vec{F}(x,y,z)$ as input and gives a scalar field as output.
+		$$\vec{\nabla} \cdot \vec{F}  = \frac{\partial F_x}{\partial x} 
+		+ \frac{\partial F_y}{\partial y} 
+		+ \frac{\partial F_z}{\partial z}$$
+		
+		\subsection{Gradient}
+		Gives the direction and rate of steepest increase of a scalar field. It takes a function $f(x,y,z)$ as input and gives a vector field as output.
+		$$\vec{\nabla} f(x,y,z) = \frac{\partial f}{\partial x} \hat{i}
+		+ \frac{\partial f}{\partial y} \hat{j}
+		+ \frac{\partial f}{\partial z} \hat{k}$$ 
+		
+		\subsection{Curl}
+		Measures the tendency of a vector field to rotate around a point. It takes a vector field $\vec{F}(x,y,z)$ as input and gives another vector field as output.
+		$$
+		\vec{\nabla} \times \vec{F} =
+		\begin{vmatrix}
+			\hat{i} & \hat{j} & \hat{k} \\
+			\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+			F_x & F_y & F_z
+		\end{vmatrix}
+		= \left(
+		\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}
+		\right)\hat{i}
+		+
+		\left(
+		\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}
+		\right)\hat{j}
+		+
+		\left(
+		\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}
+		\right)\hat{k}
+		$$
+		\section{Theory}
+		Lagrange multipliers are used to find the maxima or minima of a function $f(x,y,z)$ subject to a constraint such as $g(x,y,z)=0$.
+		
+		
+		\begin{center}
+			\includegraphics[width=0.7\linewidth]{"./Pictures/Img.png"}\\
+			Example illustration
+		\end{center}
+		
+		Geometrically, at an extremum under a constraint, the surface (or level set) of $f$ is just touching the constraint surface — meaning they are tangent to each other and do not cross. When two surfaces just touch, their normals are parallel. Since the gradient vector represents the normal direction of a level surface, this gives the essential condition:
+		$$
+		\vec{\nabla} F = \lambda \vec{\nabla} g
+		$$
+		This yields all candidate points where $f$ may achieve a maximum or minimum while staying on the constraint curve.
+		\section{Questions}
+		1. Objective function $f(x,y)=4xy$. Constraint: $\dfrac{x^2}{9} + \dfrac{y^2}{16} = 1$.\vspace{6pt} \\
+		2. Objective function $f(x,y)=x^2y$. Constraint: $x^2+2y^2=6$.\vspace{6pt} \\
+		3. Objective function $f(x,y)=x^2+y^2+2x-2y+1$. Constraint: $x^2+y^2=2$.\vspace{6pt} \\
+		4. Objective function $f(x,y)=xy$. Constraint: $x^2+2y^2=4$.\vspace{6pt} \\
+		5. Objective function $f(x,y)=x^2+y^2$. Constraint: $xy=1$.\vspace{6pt} \\
+		6. Objective function $f(x,y,z)=x+3y-z$. Constraint: $x^2+y^2+z^2=4$.\vspace{6pt} \\
+		7. Objective function $f(x,y,z)=xyz$. Constraint: $x^2+2y^2+3z^2=6$.\vspace{6pt}
+		\section{Solutions}
+		1. $f(x,y)=4xy$ and $g(x,y) = \dfrac{x^2}{9} + \dfrac{y^2}{16} - 1$\\
+		$\dfrac{\partial}{\partial x}f(x,y)=\lambda \dfrac{\partial}{\partial x}g(x,y)\implies 4y=\lambda\dfrac{2}{9}x\implies x=\dfrac{18y}{\lambda}$\\ \\
+		$\dfrac{\partial}{\partial y}f(x,y)=\lambda \dfrac{\partial}{\partial y}g(x,y)\implies 4x=\dfrac{1}{8}x\implies x=\lambda\dfrac{y}{32}$\\ \\
+		$\therefore \dfrac{18\cancel{y}}{\lambda} = \lambda\dfrac{\cancel{y}}{32}\implies \lambda^2=18\times 32\implies \lambda=\pm24\\$Putting the value of $\lambda$ in any of the previous equations yields the relation: $x=\pm\dfrac{3}{4}y$.\\ Putting the value of $x$ in $g(x,y)$ we get $\dfrac{\cancel{9}y^2}{\cancel{9}\times 16}+\dfrac{y^2}{16}=1\implies y^2=8\implies y=\pm2\sqrt{2}$.\\
+		$\therefore x =\pm \dfrac{3}{\cancel{2\sqrt{2}}\times \sqrt{2}}\times\cancel{2\sqrt{2}}=\pm\dfrac{3}{\sqrt{2}}$.\\$\therefore$ We get 4 points: $\left(\dfrac{3}{\sqrt{2}}, 2\sqrt{2} \right), \left(-\dfrac{3}{\sqrt{2}}, 2\sqrt{2} \right), \left(\dfrac{3}{\sqrt{2}}, -2\sqrt{2} \right)$ and $\left(-\dfrac{3}{\sqrt{2}}, -2\sqrt{2} \right)$. To get the critical points, we have to check which of these points correspond to those points where the gradient of $f(x,y)$ and $g(x,y)$ are parallel.
+		$$
+		\vec{\nabla} f(x,y) = 4(y\hat{i}+x\hat{j})
+		$$ $$
+		\vec{\nabla} g(x,y) = \dfrac{2}{9}x\hat{i}+\dfrac{1}{8}y\hat{j}
+		$$ at $\left(\dfrac{3}{\sqrt{2}}, 2\sqrt{2} \right)$, $\vec{\nabla} f(x,y) = 8\sqrt{2}\hat{i}+6\sqrt{2}\hat{j}=2\sqrt{2}(4\hat{i}+3\hat{j})$ and $\vec{\nabla}  g(x,y) = \dfrac{\sqrt{2}}{3}\hat{i}+\dfrac{1}{2\sqrt{2}}\hat{j}=\dfrac{1}{6\sqrt{2}}(4\hat{i}+3\hat{j})$. These 2 vectors are parallel. $\therefore \left(\dfrac{3}{\sqrt{2}}, 2\sqrt{2} \right)$ is a critical point.\\
+		
+		at $\left(-\dfrac{3}{\sqrt{2}}, 2\sqrt{2} \right)$, $\vec{\nabla} f(x,y) =2\sqrt{2}(4\hat{i}-3\hat{j})$ and $\vec{\nabla} g(x,y) = -\dfrac{1}{6\sqrt{2}}(4\hat{i}-3\hat{j})$. These 2 vectors are parallel. $\therefore \left(-\dfrac{3}{\sqrt{2}}, 2\sqrt{2} \right)$ is a critical point.\\
+		
+		at $\left(\dfrac{3}{\sqrt{2}}, -2\sqrt{2} \right)$, $\vec{\nabla} f(x,y) =-2\sqrt{2}(4\hat{i}-3\hat{j})$ and $\vec{\nabla} g(x,y) = \dfrac{1}{6\sqrt{2}}(4\hat{i}-3\hat{j})$. These 2 vectors are parallel. $\therefore \left(\dfrac{3}{\sqrt{2}}, -2\sqrt{2} \right)$ is a critical point.\\
+		
+		at $\left(-\dfrac{3}{\sqrt{2}}, -2\sqrt{2} \right)$, $\vec{\nabla} f(x,y) =-2\sqrt{2}(4\hat{i}+3\hat{j})$ and $\vec{\nabla} g(x,y) = -\dfrac{1}{6\sqrt{2}}(4\hat{i}+3\hat{j})$. These 2 vectors are parallel. $\therefore \left(-\dfrac{3}{\sqrt{2}}, -2\sqrt{2} \right)$ is a critical point.\\
+		
+		$\therefore$ Max. $f(x,y)=24$ at $\left(\dfrac{3}{\sqrt{2}}, 2\sqrt{2} \right)$ and $\left(-\dfrac{3}{\sqrt{2}}, -2\sqrt{2} \right)$ \\
+		and Min. $f(x,y)=-24$ at $\left(-\dfrac{3}{\sqrt{2}}, 2\sqrt{2} \right)$ and $\left(\dfrac{3}{\sqrt{2}}, -2\sqrt{2} \right)$ \vspace{5pt} \\
+		\hrule \vspace{10pt}
+		
+		2. $f(x,y)=x^2y$ and $g(x,y)=x^2+2y^2-6$\\
+		$\dfrac{\partial}{\partial x}f(x,y)=\lambda \dfrac{\partial}{\partial x}g(x,y)\implies \cancel{2x}y=\lambda\cancel{2x}\implies y=\lambda$\\ \\
+		$\dfrac{\partial}{\partial y}f(x,y)=\lambda \dfrac{\partial}{\partial y}g(x,y)\implies x^2=\lambda4y\implies x^2=4\lambda^2\implies x=\pm2\lambda$\\ \\
+		Substituting the values of $x$ and $y$ in $g(x,y)$ we get\vspace{5pt} \\
+		$4\lambda^2+2\lambda^2=6\implies\cancel{6}\lambda^2=\cancel{6}\implies \lambda=\pm1$\vspace{5pt}
+		\\$\therefore y=\pm1$ and $x=\pm2$\vspace{5pt}
+		\\ The points are $(2,1),(-2,1),(2,-1)$ and $(-2,-1)$.
+		$$
+		\vec{\nabla} f(x,y) = 2xy\hat{i}+x^2\hat{j}
+		$$ $$
+		\vec{\nabla} g(x,y) = 2(x\hat{i}+2y\hat{j})
+		$$ at $(2,1)$, $\vec{\nabla} f(x,y)=4(\hat{i}+\hat{j})$ and $\vec{\nabla} g(x,y)=4(\hat{i}+\hat{j})$. $\therefore (2,1)$ is a critical point.\\
+		at $(-2,1)$, $\vec{\nabla} f(x,y)=-4(\hat{i}-\hat{j})$ and $\vec{\nabla} g(x,y)=-4(\hat{i}-\hat{j})$. $\therefore (-2,1)$ is a critical point.\\
+		at $(2,-1)$, $\vec{\nabla} f(x,y)=-4(\hat{i}-\hat{j})$ and $\vec{\nabla} g(x,y)=4(\hat{i}-\hat{j})$. $\therefore (2,-1)$ is a critical point.\\
+		at $(-2,-1)$, $\vec{\nabla} f(x,y)=4(\hat{i}+\hat{j})$ and $\vec{\nabla} g(x,y)=-4(\hat{i}+\hat{j})$. $\therefore (-2,-1)$ is a critical point.\\
+		
+		$\therefore$ Max. $f(x,y)=4$ at $(2,1)$ and $(-2,1)$ and Min. $f(x,y)=-4$ at $(2,-1)$ and $(-2,-1)$ \vspace{4pt}
+		\hrule \vspace{10pt}
+		
+		3. $f(x,y)=x^2+y^2+2x-2y+1$ and $g(x,y)=x^2+y^2-2$\\
+		$\dfrac{\partial}{\partial x}f(x,y)=\lambda \dfrac{\partial}{\partial x}g(x,y)\implies \cancel{2}(x+1)=\lambda\cancel{2}x\implies x=\dfrac{1}{\lambda-1}$\\ \\
+		$\dfrac{\partial}{\partial y}f(x,y)=\lambda \dfrac{\partial}{\partial y}g(x,y)\implies \cancel{2}(y-1)=\lambda\cancel{2}y\implies y=\dfrac{-1}{\lambda-1}=-x$\\ \\
+		$\therefore$ Putting $y=-x$ in $g(x,y)$ we get\vspace{3pt}\\
+		$\cancel{2}y^2=\cancel{2}\implies y=\pm1$ and $x=\mp1$. $\therefore$ The points are $(1,-1)$ and $(-1,1)$.
+		$$
+		\vec{\nabla} f(x,y) = 2\{(x+1)\hat{i}+(y-1)\hat{j}\}
+		$$ $$
+		\vec{\nabla} g(x,y) = 2(x\hat{i}+y\hat{j})
+		$$ at $(1,-1)$, $\vec{\nabla} f(x,y)=4(\hat{i}-\hat{j})$ and $\vec{\nabla} g(x,y)=2(\hat{i}-\hat{j})$. $\therefore (1,-1)$ is a critical point.\\
+		at $(-1,1)$, $\vec{\nabla} f(x,y)=0$ and a null vector is mathematically parallel to any vector.\\So we need not calculate $\vec{\nabla} g(x,y)$. $\therefore (-1,1)$ is a critical point.\\
+		
+		$\therefore$ Max. $f(x,y)=7$ at $(1,-1)$ and Min. $f(x,y)=-1$ at $(-1,1)$ \vspace{4pt}
+		\hrule \vspace{10pt}
+		4. $f(x,y)=xy$ and $g(x,y)=x^2+2y^2-4$\\
+		$\dfrac{\partial}{\partial x}f(x,y)=\lambda \dfrac{\partial}{\partial x}g(x,y)\implies y=\lambda2x$\\ \\
+		$\dfrac{\partial}{\partial y}f(x,y)=\lambda \dfrac{\partial}{\partial y}g(x,y)\implies x=\lambda4y$\\ \\
+		Substituting $x=\lambda4y$ in $y=\lambda2x$, we get
+		$\cancel{y}=8\lambda^2\cancel{y}\implies\lambda=\pm\dfrac{1}{2\sqrt{2}}\\\therefore y=\pm\dfrac{x}{\sqrt{2}}\implies y^2=\dfrac{x^2}{2}\implies2y^2=x^2\\$Substituting the value of $2y^2$ in $g(x,y)$ we get $2x^2=4\implies x=\pm\sqrt{2}$ and $y=\pm1$ \vspace{5pt} \\
+		$\therefore$ The points are $(\sqrt{2},1),(-\sqrt{2},1),(\sqrt{2},-1)$ and $(-\sqrt{2},-1)$
+		$$
+		\vec{\nabla} f(x,y) = y\hat{i}+x\hat{j}
+		$$ $$
+		\vec{\nabla} g(x,y) = 2(x\hat{i}+2y\hat{j})
+		$$ at $(\sqrt{2},1)$, $\vec{\nabla} f(x,y)=\hat{i}+\sqrt{2}\hat{j}$ and $\vec{\nabla} g(x,y)=2\sqrt{2}(\hat{i}+\sqrt{2}\hat{j})$. $\therefore (\sqrt{2},1)$ is a critical point.\vspace{3pt}
+		
+		at $(-\sqrt{2},1)$, $\vec{\nabla} f(x,y)=\hat{i}-\sqrt{2}\hat{j}$ and $\vec{\nabla} g(x,y)=-2\sqrt{2}(\hat{i}-\sqrt{2}\hat{j})$. $\therefore (-\sqrt{2},1)$ is a critical point.\vspace{3pt}
+		
+		at $(\sqrt{2},-1)$, $\vec{\nabla} f(x,y)=-\hat{i}+\sqrt{2}\hat{j}$ and $\vec{\nabla} g(x,y)=-2\sqrt{2}(-\hat{i}+\sqrt{2}\hat{j})$. $\therefore (\sqrt{2},-1)$ is a critical point.\vspace{3pt}
+		
+		at $(-\sqrt{2},-1)$, $\vec{\nabla} f(x,y)=-(\hat{i}+\sqrt{2}\hat{j})$ and $\vec{\nabla} g(x,y)=-2\sqrt{2}(\hat{i}+\sqrt{2}\hat{j})$. $\therefore (-\sqrt{2},-1)$ is a critical point.\\ \\
+		$\therefore$ Max. $f(x,y)=2\sqrt{2}$ at $(\sqrt{2},1)$ and $(-\sqrt{2},-1)$\vspace{3pt} \\ and Min. $f(x,y)=-2\sqrt{2}$ at $(-\sqrt{2},1)$ and $(\sqrt{2},-1)$ \vspace{4pt}
+		\hrule \vspace{10pt}
+		5. $f(x,y)=x^2+y^2$ and $g(x,y)=xy-1$\\
+		$\dfrac{\partial}{\partial x}f(x,y)=\lambda \dfrac{\partial}{\partial x}g(x,y)\implies 2x=\lambda y\implies\lambda=\dfrac{2x}{y}$\\ \\
+		$\dfrac{\partial}{\partial y}f(x,y)=\lambda \dfrac{\partial}{\partial y}g(x,y)\implies 2y=\lambda x\implies\lambda=\dfrac{2y}{x}$\\ \\
+		From these 2 equations we get $\dfrac{\cancel{2}x}{y}=\dfrac{\cancel{2}y}{x}\implies x^2=y^2\implies x=y$\\
+		Using this relation in $g(x,y)$ we get $x=y=\pm1$\\
+		$$
+		\vec{\nabla} f(x,y) = 2(x\hat{i}+y\hat{j})
+		$$ $$
+		\vec{\nabla} g(x,y) = y\hat{i}+x\hat{j}
+		$$ at $(1,1)$, $\vec{\nabla} f(x,y)=2(\hat{i}+\hat{j})$ and $\vec{\nabla} g(x,y)=\hat{i}+\hat{j}$. $\therefore (1,1)$ is a critical point.\vspace{3pt}
+		
+		at $(-1,1)$, $\vec{\nabla} f(x,y)=2(-\hat{i}+\hat{j})$ and $\vec{\nabla} g(x,y)=\hat{i}-\hat{j}$. $\therefore (-1,1)$ is not a critical point.\vspace{3pt}
+		
+		at $(1,-1)$, $\vec{\nabla} f(x,y)=2(\hat{i}-\hat{j})$ and $\vec{\nabla} g(x,y)=-\hat{i}+\hat{j}$. $\therefore (1,-1)$ is not a critical point.\vspace{3pt}
+		
+		at $(-1,-1)$, $\vec{\nabla} f(x,y)=-2(\hat{i}+\hat{j})$ and $\vec{\nabla} g(x,y)=-(\hat{i}+\hat{j})$. $\therefore (-1,-1)$ is a critical point.\vspace{3pt} \\
+		
+		$\therefore$ Max. $f(x,y)=2$ at $(1,1)$ and $(-1,-1)$.
+		\vspace{4pt}
+		\hrule \vspace{10pt}
+		6. $f(x,y,z)=x+3y-z$ and $g(x,y,z)=x^2+y^2+z^2-4$.\\
+		$\dfrac{\partial}{\partial x}f(x,y,z)=\lambda \dfrac{\partial}{\partial x}g(x,y,z)\implies 1=\lambda2x\implies x=\dfrac{1}{2\lambda}$\\ \\
+		$\dfrac{\partial}{\partial y}f(x,y,z)=\lambda \dfrac{\partial}{\partial y}g(x,y,z)\implies 3=\lambda 2y\implies y=\dfrac{3}{2\lambda}=3x$\\ \\
+		$\dfrac{\partial}{\partial z}f(x,y,z)=\lambda \dfrac{\partial}{\partial z}g(x,y,z)\implies -1=\lambda 2z\implies z=-\dfrac{1}{2\lambda}=-x$\\ \\
+		Substituting $y=3x$, and $z=-x$ in $g(x,y,z)$ we get\vspace{4pt}
+		\\$x^2+9x^2+x^2=4\implies 11x^2=4\implies x=\pm\dfrac{2}{\sqrt{11}}$, $y=\pm\dfrac{6}{\sqrt{11}}$ and $z=\mp\dfrac{2}{\sqrt{11}}\\\therefore$
+		The points are $\left(\dfrac{2}{\sqrt{11}}, \dfrac{6}{\sqrt{11}}, -\dfrac{2}{\sqrt{11}}\right)$ and $\left(-\dfrac{2}{\sqrt{11}}, -\dfrac{6}{\sqrt{11}}, \dfrac{2}{\sqrt{11}}\right)$.
+		$$
+		\vec{\nabla} f(x,y) = \hat{i}+3\hat{j}-\hat{k}
+		$$ $$
+		\vec{\nabla} g(x,y) = 2(x\hat{i}+y\hat{j}+z\hat{k})
+		$$ at $\left(\dfrac{2}{\sqrt{11}}, \dfrac{6}{\sqrt{11}}, -\dfrac{2}{\sqrt{11}}\right)$, $\vec{\nabla} g(x,y)=\dfrac{4}{\sqrt{11}}(\hat{i}+3\hat{j}-\hat{k})$. $\therefore \left(\dfrac{2}{\sqrt{11}}, \dfrac{6}{\sqrt{11}}, -\dfrac{2}{\sqrt{11}}\right)$ is a critical point.\\
+		
+		at $\left(-\dfrac{2}{\sqrt{11}}, -\dfrac{6}{\sqrt{11}}, \dfrac{2}{\sqrt{11}}\right)$, $\vec{\nabla} g(x,y)=-\dfrac{4}{\sqrt{11}}(\hat{i}+3\hat{j}-\hat{k})$. $\therefore \left(-\dfrac{2}{\sqrt{11}}, -\dfrac{6}{\sqrt{11}}, \dfrac{2}{\sqrt{11}}\right)$ is a critical point.\vspace{4pt} \\ \\
+		$\therefore$ Max. $f(x,y,z)=2\sqrt{11}$ at $\left(\dfrac{2}{\sqrt{11}}, \dfrac{6}{\sqrt{11}}, -\dfrac{2}{\sqrt{11}}\right)$ and Min. $f(x,y,z)=-2\sqrt{11}$ at $\left(-\dfrac{2}{\sqrt{11}}, -\dfrac{6}{\sqrt{11}}, \dfrac{2}{\sqrt{11}}\right)$.
+		\vspace{4pt}
+		\hrule \vspace{10pt}
+		7. $f(x,y,z)=xyz$ and $g(x,y,z)=x^2+2y^2+3z^2-6$.\\
+		$\dfrac{\partial}{\partial x}f(x,y,z)=\lambda \dfrac{\partial}{\partial x}g(x,y,z)\implies yz=\lambda2x\implies \lambda=\dfrac{yz}{2x}$\\ \\
+		$\dfrac{\partial}{\partial y}f(x,y,z)=\lambda \dfrac{\partial}{\partial y}g(x,y,z)\implies xz=\lambda 4y\implies \lambda=\dfrac{xz}{4y}$\\ \\
+		$\dfrac{\partial}{\partial z}f(x,y,z)=\lambda \dfrac{\partial}{\partial z}g(x,y,z)\implies xy=\lambda 6z\implies \lambda=\dfrac{xy}{6z}$\\ \\
+		From the first 2 relations we get $\dfrac{y\cancel{z}}{2x}=\dfrac{x\cancel{z}}{4y}\implies x^2=2y^2\implies x=\pm\sqrt{2}y$\\
+		From the second and third relations we get $\dfrac{\cancel{x}z}{4y}=\dfrac{\cancel{x}y}{6z}\implies 3z^2=2y^2\implies z=\pm\sqrt{\dfrac{2}{3}}y$\\
+		Using these relations in $g(x,y)$ we get $6y^2=6\implies y=\pm1$, $x=\pm\sqrt{2}$ and $z=\pm\dfrac{2}{3}$.\\
+		$\therefore$ The points are $\left(\sqrt{2},1,\sqrt{\dfrac{2}{3}}\right)$, $\left(\sqrt{2},1,-\sqrt{\dfrac{2}{3}}\right)$,
+		$\left(\sqrt{2},-1,\sqrt{\dfrac{2}{3}}\right)$,
+		$\left(\sqrt{2},-1,-\sqrt{\dfrac{2}{3}}\right)$,
+		$\left(-\sqrt{2},1,\sqrt{\dfrac{2}{3}}\right)$, $\left(-\sqrt{2},1,-\sqrt{\dfrac{2}{3}}\right)$,
+		$\left(-\sqrt{2},-1,\sqrt{\dfrac{2}{3}}\right)$ and $\left(-\sqrt{2},-1,-\sqrt{\dfrac{2}{3}}\right)$.
+		$$
+		\vec{\nabla} f(x,y) = yz\hat{i}+xz\hat{j}+xy\hat{k}
+		$$ $$
+		\vec{\nabla} g(x,y) = 2(x\hat{i}+2y\hat{j}+3z\hat{k})
+		$$ at $\left(\sqrt{2},1,\sqrt{\dfrac{2}{3}}\right)$, $
+		\vec{\nabla} f(x,y)=\sqrt{\dfrac{2}{3}}(\hat{i}+\sqrt{2}\hat{j}+\sqrt{3}\hat{k})$ and $\vec{\nabla} g(x,y)=2\sqrt{2}(\hat{i}+\sqrt{2}\hat{j}+\sqrt{3}\hat{k})$. $\therefore \left(\sqrt{2},1,\sqrt{\dfrac{2}{3}}\right)$ is a critical point.\\
+		
+		at $\left(\sqrt{2},1,-\sqrt{\dfrac{2}{3}}\right)$, $
+		\vec{\nabla} f(x,y)=-\sqrt{\dfrac{2}{3}}(\hat{i}+\sqrt{2}\hat{j}-\sqrt{3}\hat{k})$ and $\vec{\nabla} g(x,y)=2\sqrt{2}(\hat{i}+\sqrt{2}\hat{j}-\sqrt{3}\hat{k})$. $\therefore \left(\sqrt{2},1,-\sqrt{\dfrac{2}{3}}\right)$ is a critical point.\\
+		
+		at $\left(\sqrt{2},-1,\sqrt{\dfrac{2}{3}}\right)$, $
+		\vec{\nabla} f(x,y)=-\sqrt{\dfrac{2}{3}}(\hat{i}-\sqrt{2}\hat{j}+\sqrt{3}\hat{k})$ and $\vec{\nabla} g(x,y)=2\sqrt{2}(\hat{i}-\sqrt{2}\hat{j}+\sqrt{3}\hat{k})$. $\therefore \left(\sqrt{2},-1,\sqrt{\dfrac{2}{3}}\right)$ is a critical point.\\
+		
+		at $\left(\sqrt{2},-1,-\sqrt{\dfrac{2}{3}}\right)$, $
+		\vec{\nabla} f(x,y)=\sqrt{\dfrac{2}{3}}(\hat{i}-\sqrt{2}\hat{j}-\sqrt{3}\hat{k})$ and $\vec{\nabla} g(x,y)=2\sqrt{2}(\hat{i}-\sqrt{2}\hat{j}-\sqrt{3}\hat{k})$. $\therefore \left(\sqrt{2},-1,-\sqrt{\dfrac{2}{3}}\right)$ is a critical point.\\
+		
+		at $\left(-\sqrt{2},1,\sqrt{\dfrac{2}{3}}\right)$, $
+		\vec{\nabla} f(x,y)=\sqrt{\dfrac{2}{3}}(\hat{i}-\sqrt{2}\hat{j}-\sqrt{3}\hat{k})$ and $\vec{\nabla} g(x,y)=-2\sqrt{2}(\hat{i}-\sqrt{2}\hat{j}-\sqrt{3}\hat{k})$. $\therefore \left(-\sqrt{2},1,\sqrt{\dfrac{2}{3}}\right)$ is a critical point.\\
+		
+		at $\left(-\sqrt{2},1,-\sqrt{\dfrac{2}{3}}\right)$, $
+		\vec{\nabla} f(x,y)=-\sqrt{\dfrac{2}{3}}(\hat{i}-\sqrt{2}\hat{j}+\sqrt{3}\hat{k})$ and $\vec{\nabla} g(x,y)=-2\sqrt{2}(\hat{i}-\sqrt{2}\hat{j}+\sqrt{3}\hat{k})$. $\therefore \left(-\sqrt{2},1,-\sqrt{\dfrac{2}{3}}\right)$ is a critical point.\\
+		
+		at $\left(-\sqrt{2},-1,\sqrt{\dfrac{2}{3}}\right)$, $
+		\vec{\nabla} f(x,y)=-\sqrt{\dfrac{2}{3}}(\hat{i}+\sqrt{2}\hat{j}-\sqrt{3}\hat{k})$ and $\vec{\nabla} g(x,y)=-2\sqrt{2}(\hat{i}+\sqrt{2}\hat{j}-\sqrt{3}\hat{k})$. $\therefore \left(-\sqrt{2},-1,\sqrt{\dfrac{2}{3}}\right)$ is a critical point.\\
+		
+		at $\left(-\sqrt{2},-1,-\sqrt{\dfrac{2}{3}}\right)$, $
+		\vec{\nabla} f(x,y)=\sqrt{\dfrac{2}{3}}(\hat{i}+\sqrt{2}\hat{j}+\sqrt{3}\hat{k})$ and $\vec{\nabla} g(x,y)=-2\sqrt{2}(\hat{i}+\sqrt{2}\hat{j}+\sqrt{3}\hat{k})$. $\therefore \left(-\sqrt{2},-1,-\sqrt{\dfrac{2}{3}}\right)$ is a critical point.\\ \\
+		$\therefore$ Min. $f(x,y,z)=-\dfrac{2}{\sqrt{3}}$ at $\left(\sqrt{2},1,-\sqrt{\dfrac{2}{3}}\right)$, $\left(\sqrt{2},-1,\sqrt{\dfrac{2}{3}}\right)$,
+		$\left(-\sqrt{2},1,\sqrt{\dfrac{2}{3}}\right)$ and 
+		$\left(-\sqrt{2},-1,-\sqrt{\dfrac{2}{3}}\right)$.\\ \\
+		and Max. $f(x,y,z)=\dfrac{2}{\sqrt{3}}$ at $\left(\sqrt{2},-1,-\sqrt{\dfrac{2}{3}}\right)$, $\left(-\sqrt{2},-1,\sqrt{\dfrac{2}{3}}\right)$,
+		$\left(-\sqrt{2},1,-\sqrt{\dfrac{2}{3}}\right)$ and 
+		$\left(\sqrt{2},1,\sqrt{\dfrac{2}{3}}\right)$.
+		\vspace{4pt}
+		\hrule
+	\end{large}
+\end{document}
