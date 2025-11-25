@@ -222,4 +222,71 @@
 			(q3) edge[below] node{b} (q4)
 			(q4) edge[loop right] node{a,b} (q4);
 	\end{tikzpicture}
+	
+	\begin{tikzpicture}
+		\node[state] (v2) {$V_2$};
+		\node[state, below left of=v2] (v1) {$V_1$};
+		\node[state, right of=v2] (v4) {$V_4$};
+		\node[state, below of=v2] (v3) {$V_3$};
+		\node[state, below of=v4] (v5) {$V_5$};
+		\draw 	(v5) edge[loop below] (v5)
+		(v5) edge (v1)
+		(v5) edge (v2)
+		(v5) edge (v3)
+		(v5) edge (v4)
+		(v4) edge[loop above] (v4)
+		(v4) edge (v1)
+		(v4) edge (v2)
+		(v4) edge (v3)
+		(v3) edge[loop below] (v3)
+		(v3) edge (v2)
+		(v3) edge (v1)
+		(v2) edge[loop above] (v2)
+		(v2) edge (v1)
+		(v1) edge[loop below] (v1);
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}
+		\node[state, initial] (q1) {$A$};
+		\node[state, accepting, right of=q1] (q2) {$B$};
+		\draw 	(q1) edge[loop above] node{a} (q1)
+		(q1) edge[bend left, above] node{b} (q2)
+		(q2) edge[bend left, below] node{b} (q1)
+		(q2) edge[loop above] node{a} (q2);
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}
+		\node[state, accepting, initial] (q1) {$A$};
+		\node[state, right of=q1] (q2) {$B$};
+		\node[state, right of=q2] (q3) {$C$};
+		\draw 	(q1) edge[loop above] node{0} (q1)
+		(q2) edge[loop above] node{0} (q2)
+		(q3) edge[loop above] node{0} (q3)
+		(q1) edge[above] node{1} (q2)
+		(q2) edge[above] node{1} (q3)
+		(q3) edge[bend left, above] node{1} (q1);
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}
+		\node[state, initial] (q1) {$A$};
+		\node[state, right of=q1] (q2) {$B$};
+		\node[state, accepting, right of=q2] (q3) {$C$};
+		\draw 	(q1) edge[loop above] node{a} (q1)
+		(q1) edge[bend left, above] node{a} (q2)
+		(q2) edge[bend left, below] node{b} (q1)
+		(q2) edge[loop above] node{b} (q2)
+		(q2) edge[bend left, above] node{a} (q3)
+		(q3) edge[bend left, below] node{a} (q2);
+	\end{tikzpicture}
+	
+	\begin{tikzpicture}
+		\node[state, initial] (q1) {$A$};
+		\node[state, accepting, right of=q1] (q2) {$B$};
+		\node[state, accepting, right of=q2] (q3) {$C$};
+		\draw 	(q1) edge[loop above] node{b} (q1)
+		(q1) edge[above] node{a} (q2)
+		(q2) edge[loop above] node{b} (q2)
+		(q2) edge[bend left, above] node{a} (q3)
+		(q3) edge[bend left, below] node{a} (q2);
+	\end{tikzpicture}
 \end{document}
